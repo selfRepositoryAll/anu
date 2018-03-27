@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <!--<script type='text/javascript' src="./dist/React.js"></script>-->
+    <script type='text/javascript' src="./test/react.development.js"></script>
+    <script type='text/javascript' src="./test/react-dom.development.js"></script>
+    <script type='text/javascript' src="./lib/babel.js"></script>
+    <script type="text/babel">
+
+      </script>
+</head>
+
+<body>
+
+    <pre>应该等于
+           
+          
+        </pre>
+    <h1 id='example' class="root">
+
+    </h1>
+    <script type='text/babel'>
+           var container = document.getElementById("example")
+           var div = container
+            var PropTypes = React.PropTypes
+            if(!window.ReactDOM){
+              window.ReactDOM = React
+            }
+            var expect = function(a) {
+                return {
+                    toBe: function(b) {
+                        console.log(a,"vs", b, a === b)
+                    },
+                    toEqual(b){
+                        console.log(a,"vs", b, a +""=== b+"")
+                    },
+                }
+            }  
+        var body = document.body;
+        var container = document.createElement("div");
+        body.appendChild(container);
+  var aaa = "";
+  class App extends React.Component {
+      constructor(props) {
+          super(props);
+          this.state = {
+              aaa: {
+                  a: 7
+              }
+          };
+      }
+
+      onWheel(e) {
+          console.log(e.deltaY, e)
+      }
+      
+
+      render() {
+          return (
+              <div
+                  onWheel={this.onWheel}
+                  style={{
+                      width: 200,
+                      height: 200
+                  }}
+              >
+                  <div
+                      ref="focus2"
+                      tabIndex={-1}
+                      onFocus={this.onFocus1}
+                      style={{
+                          width: 100,
+                          height: 100
+                      }}
+                  >
+                      222
+                  </div>
+              </div>
+          );
+      }
+  }
+
+  var s = ReactDOM.render(<App />, div);
+console.log(s)
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <script type='text/javascript' src="./lib/babel.js"></script>
+  <script type='text/javascript' src="./dist/React.js"></script>
+  <!-- <script type='text/javascript' src="./dist/React.js"></script> -->
+  <!--<script type='text/javascript' src="./lib/ReactTestUtils.js"></script>-->
+  <!-- <script type='text/javascript' src="./react.js"></script>
+    <script type='text/javascript' src="./react-dom.js"></script>-->
+  <!-- <script type="module">
+  import React from './src/React.js'
+  </script> -->
+  <!-- <script type='text/babel' src="./src/React.js"></script> -->
+  <script type="text/babel">
+  </script>
+</head>
+
+<body>
+  <div id='example'></div>
+</body>
+
+</html>
+<script>
+
+
+</script>
+<script type='text/babel'>
+  var container = document.getElementById("example")
+  class Test extends React.Component {
+    constructor(props) {
+      super(props)
+      this.state = {
+        age: 10
+      }
+    }
+    handleclick() {
+      this.setState({
+        age: 100
+      })
+    }
+    render() {
+      // 这里面的this 是 类的实例
+        const {
+          age
+        } = this.state;
+        return ( 
+          <div >
+            <p> {age}</p>
+            <button onClick={()=>this.handleclick()}>buttton</button>
+          </div>
+        );
+      }
+  }
+      ReactDOM.render(<Test/> , container)
+</script>

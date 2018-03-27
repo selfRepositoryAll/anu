@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+  <script type='text/javascript' src="./dist/React.js"></script>
+  <!-- <script type='text/javascript' src="./lib/devtools.js"></script>-->
+  <!-- <script type='text/javascript' src="./test/react.development.js"></script>
+  <script type='text/javascript' src="./test/react-dom.development.js"></script>-->
+  <!--<script src="./react.js"></script>
+  <script src="./react-dom.js"></script>-->
+    <script type='text/javascript' src="./lib/babel.js"></script>
+    <style>
+        .wrapper{
+            height:200px;
+            width:200px;
+            overflow: scroll;
+        }
+        .inner{
+            height:500px;
+            width:200px;
+            background: magenta;
+        }
+    </style>
+</head>
+
+<body>
+    <div>开发者工具</div>
+    <pre>
+          
+  </pre>
+    <div id='example'></div>
+    <script type='text/babel'>
+   
+   var container = document.getElementById("example");
+   var div = container;
+ //  var PropTypes = React.PropTypes 
+   if (!window.ReactDOM) {
+       window.ReactDOM = window.React;
+   }
+       
+class SuffixNode {
+    constructor() {
+        this.children = [];
+    }
+}
+class SuffixTree {
+    constructor() {
+        this.root = new SuffixNode();
+    }
+    isValid(str) {
+        return /^[a-z1-9]+$/i.test(str);
+    }
+    insert(word) {
+        // addWord
+        if (this.isValid(word)) {
+          console.log("word", word)
+            var cur = this.root,
+                children = cur.children, remain = 1
+            for (var i = 0; i < word.length; i++) {
+                var c = word.charAt(i);
+                var addNode = true;
+                for (var j = 0; j < i; j++) {
+                    var node = children[j];
+                    if(!node){
+                       remain++
+                       addNode = false;
+                       console.log("进入这里")
+                    }else{
+                      if ( node.edge.indexOf(c) === 0) {
+                         addNode = false;
+                      }
+                      node.edge += c; //修改原有的边
+                    }
+                    
+                }
+                if (addNode) {
+                  node = new SuffixNode();
+                  node.edge = c;
+                  children.push(node);
+                }
+            }
+           
+        }
+    }
+}
+var tree = new SuffixTree();
+tree.insert("abcab");
+console.log(tree);
+
+
+</script>
+
+</body>
+
+</html>
